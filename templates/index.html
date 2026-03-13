@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RL Grid World - Value Iteration</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Outfit:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Grid World <span class="highlight">Solver</span></h1>
+            <p>HW1-3: Value Iteration Algorithm Visualization</p>
+        </header>
+
+        <main>
+            <section class="controls glass">
+                <div class="control-group">
+                    <label for="gridSize">Grid Size:</label>
+                    <input type="number" id="gridSize" value="5" min="3" max="10">
+                </div>
+                <div class="control-group">
+                    <label for="gamma">Gamma (γ):</label>
+                    <input type="number" id="gamma" value="0.9" step="0.1" min="0" max="1">
+                </div>
+                <div class="mode-selector">
+                    <button id="setStartBtn" class="mode-btn active" onclick="setMode('start')">Set Start</button>
+                    <button id="setTargetBtn" class="mode-btn" onclick="setMode('target')">Set Target</button>
+                    <button id="setWallBtn" class="mode-btn" onclick="setMode('wall')">Set Wall</button>
+                </div>
+                <button id="solveBtn" class="primary-btn">Compute Optimal Policy</button>
+            </section>
+
+            <div class="visualization-layout">
+                <section class="grid-section glass">
+                    <h3>Environment & Policy</h3>
+                    <div id="gridContainer" class="grid-container"></div>
+                    <div class="legend">
+                        <span><span class="dot start"></span> Start</span>
+                        <span><span class="dot target"></span> End</span>
+                        <span><span class="dot wall"></span> Obstacle</span>
+                    </div>
+                </section>
+
+                <section class="value-section glass">
+                    <h3>Value Function V(s)</h3>
+                    <div id="valueGridContainer" class="grid-container"></div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
